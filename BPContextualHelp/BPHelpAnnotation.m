@@ -36,9 +36,22 @@
 		_anchorView = [anchorView bp_retain];
 		_contentOffset = contentOffset;
 		_text = [text copy];
+        _annotationColor = [UIColor colorWithRed:0.965 green:0.855 blue:0.451 alpha:1];
 	}
 	
 	return self;
+}
+
+- (id)initWithDirection:(BPHelpAnnotationDirection)direction anchorView:(UIView *)anchorView contentOffset:(CGSize)contentOffset andText:(NSString *)text withAnnotationColor:(UIColor *)color withBlinkingMode:(BOOL)blinkingMode{
+    
+    
+    if (self = [self initWithDirection:direction anchorView:anchorView contentOffset:contentOffset andText:text]){
+        _annotationColor = color;
+        _inBlinkingMode = blinkingMode;
+    
+    }
+    
+    return self;
 }
 
 - (id)initWithDirection:(BPHelpAnnotationDirection)direction landscapeAnchorPoint:(CGPoint)landscapeAnchorPoint portraitAnchorPoint:(CGPoint)portraitAnchorPoint contentOffset:(CGSize)contentOffset andText:(NSString *)text

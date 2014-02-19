@@ -41,6 +41,16 @@ static const CGFloat BPCircleRadius = 35.0;
 		self.opaque = NO;
 		self.backgroundColor = [UIColor clearColor];
 		self.clipsToBounds = NO;
+        
+        if(annotation.inBlinkingMode){
+            CABasicAnimation *theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+            theAnimation.duration=0.7;
+            theAnimation.repeatCount=HUGE_VALF;
+            theAnimation.autoreverses=YES;
+            theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+            theAnimation.toValue=[NSNumber numberWithFloat:0.5];
+            [self.layer addAnimation:theAnimation forKey:@"animateScale"];
+        }
 	}
 	
 	return self;
@@ -66,8 +76,8 @@ static const CGFloat BPCircleRadius = 35.0;
 - (void)drawRect:(CGRect)rect
 {
 	UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(self.bounds, 2, 2)];
-	UIColor *strokeColor = [UIColor colorWithRed:0.965 green:0.855 blue:0.451 alpha:1];
-	UIColor *fillColor = [UIColor colorWithRed:0.965 green:0.855 blue:0.451 alpha:0.6];
+	UIColor *strokeColor = self.annotation.annotationColor;
+	UIColor *fillColor = [self fillColorFromAnnotationColor:self.annotation.annotationColor];
 	[fillColor set];
 	[path fill];
 	[strokeColor set];
@@ -78,5 +88,17 @@ static const CGFloat BPCircleRadius = 35.0;
 	[path setLineWidth:5.0];
 	[path stroke];
 }
+
+- (UIColor *)fillColorFromAnnotationColor:(UIColor *)c
+{
+    CGFloat r, g, b, a;
+    if ([c getRed:&r green:&g blue:&b alpha:&a])
+        return [UIColor colorWithRed:r
+                               green:g
+                                blue:b
+                               alpha:0.6];
+    return nil;
+}
+
 
 @end

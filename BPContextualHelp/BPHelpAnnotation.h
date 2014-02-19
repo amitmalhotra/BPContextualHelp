@@ -43,6 +43,8 @@ typedef void (^BPHelpAnnotationTapBlock)();
 - (UIView *)anchorView;
 - (CGSize)contentOffset;
 - (NSString *)text;
+- (UIColor *)annotationColor;
+- (BOOL)inBlinkingMode;
 - (BPHelpAnnotationTapBlock)tapBlock;
 
 - (BPHelpAnnotationView *)view;
@@ -58,9 +60,12 @@ typedef void (^BPHelpAnnotationTapBlock)();
 @property (nonatomic, readonly) UIView *anchorView;
 @property (nonatomic, readonly) CGSize contentOffset;
 @property (nonatomic, readonly) NSString *text;
+@property (nonatomic, readonly) UIColor *annotationColor;
+@property (nonatomic, readonly) BOOL inBlinkingMode;
 @property (nonatomic, copy) BPHelpAnnotationTapBlock tapBlock;
 
 - (id)initWithDirection:(BPHelpAnnotationDirection)direction anchorView:(UIView *)anchorView contentOffset:(CGSize)contentOffset andText:(NSString *)text;
+- (id)initWithDirection:(BPHelpAnnotationDirection)direction anchorView:(UIView *)anchorView contentOffset:(CGSize)contentOffset andText:(NSString *)text withAnnotationColor:(UIColor*)color withBlinkingMode:(BOOL)blinkingMode;
 - (id)initWithDirection:(BPHelpAnnotationDirection)direction landscapeAnchorPoint:(CGPoint)landscapeAnchorPoint portraitAnchorPoint:(CGPoint)portraitAnchorPoint contentOffset:(CGSize)contentOffset andText:(NSString *)text;
 - (id)initWithDirection:(BPHelpAnnotationDirection)direction landscapeAnchorPoint:(CGPoint)landscapeAnchorPoint portraitAnchorPoint:(CGPoint)portraitAnchorPoint contentOffset:(CGSize)contentOffset andText:(NSString *)text tapBlock:(BPHelpAnnotationTapBlock)tapBlock;
 
