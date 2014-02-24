@@ -42,16 +42,79 @@ static const CGFloat BPCircleRadius = 35.0;
 		self.backgroundColor = [UIColor clearColor];
 		self.clipsToBounds = NO;
         
-        if(annotation.inBlinkingMode){
-            CABasicAnimation *theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
-            theAnimation.duration=0.7;
-            theAnimation.repeatCount=HUGE_VALF;
-            theAnimation.autoreverses=YES;
-            theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
-            theAnimation.toValue=[NSNumber numberWithFloat:0.5];
-            [self.layer addAnimation:theAnimation forKey:@"animateScale"];
+        switch (annotation.annotationMode) {
+            case BPBlinkingMode:
+            {
+                CABasicAnimation *theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.scale"];
+                theAnimation.duration=0.7;
+                theAnimation.repeatCount=HUGE_VALF;
+                theAnimation.autoreverses=YES;
+                theAnimation.fromValue=[NSNumber numberWithFloat:1.0];
+                theAnimation.toValue=[NSNumber numberWithFloat:0.5];
+                
+                [self.layer addAnimation:theAnimation forKey:@"animateScale"];
+            }
+                break;
+                
+            case BPSwipeUpMode:
+            {
+                CABasicAnimation *moveUp = [CABasicAnimation animationWithKeyPath:@"position.y"];
+                moveUp.byValue  = @(-100.0f);
+                moveUp.duration = 0.7;
+                moveUp.removedOnCompletion = NO;
+                moveUp.fillMode = kCAFillModeBoth;
+                moveUp.repeatCount=HUGE_VALF;
+                moveUp.autoreverses=YES;
+                [self.layer addAnimation:moveUp forKey:@"y"];
+            }
+                break;
+            
+            case BPSwipeDownMode:
+            {
+                CABasicAnimation *moveUp = [CABasicAnimation animationWithKeyPath:@"position.y"];
+                moveUp.byValue  = @(100.0f);
+                moveUp.duration = 0.7;
+                moveUp.removedOnCompletion = NO;
+                moveUp.fillMode = kCAFillModeBoth;
+                moveUp.repeatCount=HUGE_VALF;
+                moveUp.autoreverses=YES;
+                [self.layer addAnimation:moveUp forKey:@"y"];
+            }
+                break;
+            
+            case BPPanLeftMode:
+            {
+                CABasicAnimation *pan = [CABasicAnimation animationWithKeyPath:@"position.x"];
+                pan.byValue  = @(-100.0f);
+                pan.duration = 0.7;
+                pan.removedOnCompletion = NO;
+                pan.fillMode = kCAFillModeBoth;
+                pan.repeatCount=HUGE_VALF;
+                pan.autoreverses=YES;
+                [self.layer addAnimation:pan forKey:@"x"];
+            
+            }
+                break;
+            
+            case BPPanRightMode:
+            {
+                
+                CABasicAnimation *pan = [CABasicAnimation animationWithKeyPath:@"position.x"];
+                pan.byValue  = @(100.0f);
+                pan.duration = 0.7;
+                pan.removedOnCompletion = NO;
+                pan.fillMode = kCAFillModeBoth;
+                pan.repeatCount=HUGE_VALF;
+                pan.autoreverses=YES;
+                [self.layer addAnimation:pan forKey:@"x"];
+                
+            }
+                break;
+            default:
+                break;
         }
-	}
+        
+    }
 	
 	return self;
 }
@@ -85,7 +148,7 @@ static const CGFloat BPCircleRadius = 35.0;
 	CGContextAddPath(UIGraphicsGetCurrentContext(), path.CGPath);
 	CGContextClip(UIGraphicsGetCurrentContext());
 	CGContextSetShadowWithColor(UIGraphicsGetCurrentContext(), CGSizeZero, 3.0, [UIColor colorWithWhite:0.0 alpha:0.3].CGColor);
-	[path setLineWidth:5.0];
+	[path setLineWidth:0.5];
 	[path stroke];
 }
 

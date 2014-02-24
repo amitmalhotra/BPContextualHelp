@@ -42,13 +42,12 @@
 	return self;
 }
 
-- (id)initWithDirection:(BPHelpAnnotationDirection)direction anchorView:(UIView *)anchorView contentOffset:(CGSize)contentOffset andText:(NSString *)text withAnnotationColor:(UIColor *)color withBlinkingMode:(BOOL)blinkingMode{
+- (id)initWithDirection:(BPHelpAnnotationDirection)direction anchorView:(UIView *)anchorView contentOffset:(CGSize)contentOffset andText:(NSString *)text withAnnotationColor:(UIColor *)color withMode:(BPCircleAnnotationMode)annotationMode{
     
     
     if (self = [self initWithDirection:direction anchorView:anchorView contentOffset:contentOffset andText:text]){
         _annotationColor = color;
-        _inBlinkingMode = blinkingMode;
-    
+        _annotationMode = annotationMode;
     }
     
     return self;

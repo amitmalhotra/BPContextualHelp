@@ -57,8 +57,18 @@
 //									 [[BPHelpAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionLeft landscapeAnchorPoint:CGPointMake(50.0, 50.0) portraitAnchorPoint:CGPointMake(50.0, 70.0) contentOffset:CGSizeZero andText:@"This annotation is anchored to one point in landscape and a different one in portrait."],
 //									 [[BPHelpAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionTop anchorView:self.showButton contentOffset:CGSizeMake(50.0, 0.0) andText:@"This annotation is offset to the right."],
 //									 //[[BPHelpTapAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionNone landscapeAnchorPoint:CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)) portraitAnchorPoint:CGPointMake(CGRectGetMidY(self.view.bounds), CGRectGetMidX(self.view.bounds)) contentOffset:CGSizeZero andText:nil]
-                             [[BPHelpTapAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionNone anchorView:self.showButton contentOffset:CGSizeMake(20.0, 0.0) andText:nil withAnnotationColor:[UIColor colorWithRed:0.431 green:0.788 blue:0.0063 alpha:1.0] withBlinkingMode:YES]
-									 ];
+                             [[BPHelpTapAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionNone anchorView:self.showButton contentOffset:CGSizeMake(20.0, 0.0) andText:nil withAnnotationColor:[UIColor colorWithRed:0.431 green:0.788 blue:0.0063 alpha:1.0] withMode:BPBlinkingMode
+									 ],
+                             [[BPHelpTapAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionNone anchorView:self.showButton contentOffset:CGSizeMake(20.0, 0.0) andText:nil withAnnotationColor:[UIColor colorWithRed:0.431 green:0.788 blue:0063 alpha:1.0] withMode:BPSwipeUpMode
+                              ],
+                             [[BPHelpTapAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionNone anchorView:self.showButton contentOffset:CGSizeMake(20.0, 0.0) andText:nil withAnnotationColor:[UIColor colorWithRed:0.431 green:788 blue:0063 alpha:1.0] withMode:BPSwipeDownMode
+                              ],
+                             [[BPHelpTapAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionNone anchorView:self.showButton contentOffset:CGSizeMake(20.0, 0.0) andText:nil withAnnotationColor:[UIColor colorWithRed:0.431 green:0.788 blue:0063 alpha:1.0] withMode:BPPanRightMode
+                              ],
+                             [[BPHelpTapAnnotation alloc] initWithDirection:BPHelpAnnotationDirectionNone anchorView:self.showButton contentOffset:CGSizeMake(20.0, 0.0) andText:nil withAnnotationColor:[UIColor colorWithRed:431 green:0.788 blue:0063 alpha:1.0] withMode:BPPanLeftMode
+                              ]
+
+                             ];
 	
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 	{
