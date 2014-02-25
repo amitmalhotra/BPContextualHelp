@@ -33,5 +33,6 @@ typedef void (^BPHelpOverlayViewCompletionBlock)();
 + (BPHelpOverlayView *)helpOverlayViewWithAnnotations:(NSArray *)annotations;
 
 - (void)show;
+- (void)hide;
 
 @end
