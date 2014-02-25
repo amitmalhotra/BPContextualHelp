@@ -36,7 +36,7 @@
 		_anchorView = [anchorView bp_retain];
 		_contentOffset = contentOffset;
 		_text = [text copy];
-        _annotationColor = [UIColor colorWithRed:0.965 green:0.855 blue:0.451 alpha:1];
+        _annotationColor = [[UIColor colorWithRed:0.965 green:0.855 blue:0.451 alpha:1] bp_retain];
 	}
 	
 	return self;
@@ -46,7 +46,7 @@
     
     
     if (self = [self initWithDirection:direction anchorView:anchorView contentOffset:contentOffset andText:text]){
-        _annotationColor = color;
+        _annotationColor = [color bp_retain];
         _annotationMode = annotationMode;
     }
     

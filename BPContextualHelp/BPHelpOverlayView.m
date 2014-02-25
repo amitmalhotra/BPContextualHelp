@@ -224,7 +224,10 @@
 	NSArray *filteredElements = [self.annotationAccessibilityElements filteredArrayUsingBlock:^BOOL(id item) {
 		return (item != [NSNull null]);
 	}];
-	return filteredElements[index];
+    if (index<filteredElements.count) {
+        return filteredElements[index];
+    }
+	return nil;
 }
 
 - (NSInteger)accessibilityElementCount
